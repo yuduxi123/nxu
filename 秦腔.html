@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秦腔信息</title>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="./mycss/eui.css">
+    <script src="./js/eui.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <style>
+        @font-face {
+        font-family: "Xingshu";
+        src: url(./font/SanJiXingShuJianTi-2.ttf);
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 防止页面出现滚动条 */
+        }
+        a{
+            text-decoration: none;
+        }
+        span{
+            font-family: "Xingshu";
+            font-size: 30px;
+        }
+        .el-carousel__item h3 {
+          color: #475669;
+          font-size: 20px;
+          opacity: 0.75;
+          line-height: 200px;
+          margin: 0;
+        }
+        
+        .el-carousel__item:nth-child(2n) {
+            background-color:rgba(0, 0, 0, 0)
+          
+        }
+        
+        .el-carousel__item:nth-child(2n+1) {
+            background-color:rgba(0, 0, 0, 0)
+        }
+        #backgroundVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -100; /* 你可以根据需要调整z-index的值 */
+        }
+        .d11,.d12,.d13,.d14 {
+            position: relative;
+            z-index: 1; /* 确保内容位于视频的前面 */
+            /* 其他样式，比如内容的位置和样式 */
+        }
+        .d11{
+            width: 100%;
+            height: 250px;
+        }
+        .d12{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d12>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d13{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        
+        .d14{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+
+
+        .d21{
+            width: 100%;
+            height: 250px;
+        }
+        .d22{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d22>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d23{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d24{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+       
+
+
+
+        .d31{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d32{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d32>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d33{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d34{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+        .d41{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d42{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d42>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d43{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d44{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+
+
+
+      </style>
+</head>
+<body>
+    <div id="app">
+        <div class="d0">
+            <video autoplay muted loop id="backgroundVideo">
+                <source src="./video/背景.mp4" type="video/mp4">
+            </video>
+        </div>
+        <template>
+            <el-carousel height="725px" direction="vertical" :autoplay="false">
+              <el-carousel-item >
+               <div class="d1">
+                            <div class="d11">
+                                <span>
+                                    <h1>基本介绍</h1>
+                                    <strong>秦腔，别称“梆子腔”“陕西梆子”；别称“梆子腔”“陕西梆子” ，中国汉族最古老的戏剧之一，起于西周，源于西府[核心地区是陕西省宝鸡市的岐山（西岐）与凤翔（雍城）]。成熟于秦。 国家级非物质文化遗产之一。
+                                        古时陕西、甘肃一带属秦国，所以称之为“秦腔”。因为早期秦腔演出时，常用枣木梆子敲击伴奏，故又名“梆子腔”。秦腔成形后，流传全国各地，因其整套成熟、完整的表演体系，对各地的剧种产生了不同程度的影响，并直接影响了梆子腔成为梆子腔剧种的始祖。秦腔的表演技艺朴实、粗犷、豪放，富有夸张性，生活气息浓厚，技巧丰富。 </strong>
+                                </span>
+                            </div>
+                            <div class="d12">
+                                <img src="./img/秦腔logo.png" alt="">
+                            </div>
+                            <div class="d13">
+                                <span>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <strong>2006年5月20日，经国务院批准列入第一批国家级非物质文化遗产名录。</strong>
+                                </span>
+                                <div class="d14">
+                                    <span><strong>未完待续......</strong></span>
+                                </div>
+                            </div>
+
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d2">
+                                    <div class="d21">
+                                        <span>
+                                        <h1>发展历史</h1>
+                                        <strong>秦腔艺术源远流长。相传唐玄宗李隆基曾经专门设立了培养演唱子弟的梨园，既演唱宫廷乐曲，也演唱民间歌曲。梨园的乐师李龟年原本就是陕西民间艺人，他所作的《秦王破阵乐》称为秦王腔，简称“秦腔”。这大概就是最早的秦腔乐曲。清代是秦腔的繁盛时期。秦腔的鼎盛时期在乾隆年间（1736—1795年），这个时期，全国很多地方都有秦腔班社，仅西安一地共就有三十六个秦腔班社，如保符班、江东班、双寨班、锦绣班等。康熙四十四年（1705年）前后出现的张鼎望《秦腔论》，乾隆年间（1736—1795年）严长明《秦云撷英小谱》、吴长元《燕兰小谱》、周元鼎《影戏论》，都是较有影响的论述秦腔著作。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d22">
+                                        <img src="./img/秦腔logo.png" alt="">
+                                    </div>
+                                    <div class="d23">
+                                        <span>
+                                            <strong>
+                                                <br><br>1912年，在西安成立了以“移风易俗”为宗旨的陕西易俗社，对秦腔剧目、音乐唱腔、表演艺术、导演、舞台设计等方面进行了一些革新，并大量编演反映资产阶级民主革命的新剧目。
+
+                                                抗日战争期间，陕甘宁边区秦腔艺术工作者，为戏曲表现革命的现实生活，塑造工农兵英雄形象，进行了大胆的探索。
+                                              
+                                                新中国成立后，陕西、甘肃、宁夏、青海和新疆五省、区陆续在县级以上建立了专业秦腔剧团，至20世纪80年代初，共达三百多个，为繁荣秦腔艺术积累了大量的人才资源。
+                                              
+                                                20世纪80年代以来，秦腔受到现代文化的巨大冲击，专业演出团体生存艰难，优秀演艺人才缺乏，传统表演技艺正面临失传的危险。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d24">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d3">
+                                    <div class="d31">
+                                        <span>
+                                            <h1>艺术特点</h1>
+                                            <strong>作为陕西地方戏曲剧种之一，其艺术特点包括音乐节奏明快、动作表演突出、角色刻画丰满、唱念做打完美结合以及注重地方方言的运用等。秦腔的表演形式重视音乐的节奏感和表现力，舞台动作多样，突出角色形象和性格特点，唱念做打的完美结合展现了其丰富的艺术内涵。同时，秦腔表演中还广泛运用了陕西方言，呈现出浓厚的地方文化特色。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d32">
+                                        <img src="./img/秦腔logo.png" alt="">
+                                    </div>
+                                    <div class="d33">
+                                        <span>
+                                            <br>
+                                            <strong></strong>
+                                        </span>
+                                    </div>
+                                    <div class="d34">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d4">
+                                    <div class="d41">
+                                        <span>
+                                            <h1>代表作品</h1>
+                                            <a href="https://tv.cctv.com/2011/08/10/VIDEYwzDt66QBXX9ZZ0buGDp110810.shtml">《白蛇传》</a>
+                                            <a href="https://tv.cctv.com/2011/08/10/VIDEYwzDt66QBXX9ZZ0buGDp110810.shtml">《斩单童》</a>
+                                            <a href="https://tv.cctv.com/2011/08/10/VIDEYwzDt66QBXX9ZZ0buGDp110810.shtml">《三娘教子》</a>
+                                            <a href="https://tv.cctv.com/2011/08/10/VIDEYwzDt66QBXX9ZZ0buGDp110810.shtml">《王贵与李香香》</a>
+                                            <a href="https://tv.cctv.com/2011/08/10/VIDEYwzDt66QBXX9ZZ0buGDp110810.shtml">《火焰驹》</a>
+                                            <a href="https://tv.cctv.com/2011/08/10/VIDEYwzDt66QBXX9ZZ0buGDp110810.shtml">《穆桂英大战洪州》</a>
+                                            <a href="https://tv.cctv.com/2011/08/10/VIDEYwzDt66QBXX9ZZ0buGDp110810.shtml">《五典坡》</a>
+                                        </span>
+                                    </div>
+                                    <div class="d42">
+                                        <img src="./img/秦腔logo.png" alt="">
+                                    </div>
+                                    <div class="d43"></div>
+                                    <div class="d44">
+                                        <span><strong>完......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+            </el-carousel>
+        </template>
+        
+    </div>
+    
+    <script>
+        let v=new Vue({
+            el:'#app',
+            data:{
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

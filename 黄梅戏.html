@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄梅戏信息</title>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="./mycss/eui.css">
+    <script src="./js/eui.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <style>
+        @font-face {
+        font-family: "Xingshu";
+        src: url(./font/SanJiXingShuJianTi-2.ttf);
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 防止页面出现滚动条 */
+        }
+        a{
+            text-decoration: none;
+        }
+        span{
+            font-family: "Xingshu";
+            font-size: 30px;
+        }
+        .el-carousel__item h3 {
+          color: #475669;
+          font-size: 20px;
+          opacity: 0.75;
+          line-height: 200px;
+          margin: 0;
+        }
+        
+        .el-carousel__item:nth-child(2n) {
+            background-color:rgba(0, 0, 0, 0)
+          
+        }
+        
+        .el-carousel__item:nth-child(2n+1) {
+            background-color:rgba(0, 0, 0, 0)
+        }
+        #backgroundVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -100; /* 你可以根据需要调整z-index的值 */
+        }
+        .d11,.d12,.d13,.d14 {
+            position: relative;
+            z-index: 1; /* 确保内容位于视频的前面 */
+            /* 其他样式，比如内容的位置和样式 */
+        }
+        .d11{
+            width: 100%;
+            height: 250px;
+        }
+        .d12{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 300px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d12>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d13{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1190px;
+            height: 430px;
+            display: inline-block;
+        }
+        
+        .d14{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+
+
+        .d21{
+            width: 100%;
+            height: 250px;
+        }
+        .d22{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 300px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d22>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d23{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1190px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d24{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+       
+
+
+
+        .d31{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d32{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 300px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d32>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d33{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1190px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d34{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+        .d41{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d42{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 300px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d42>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d43{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1190px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d44{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+
+
+
+      </style>
+</head>
+<body>
+    <div id="app">
+        <div class="d0">
+            <video autoplay muted loop id="backgroundVideo">
+                <source src="./video/背景.mp4" type="video/mp4">
+            </video>
+        </div>
+        <template>
+            <el-carousel height="725px" direction="vertical" :autoplay="false">
+              <el-carousel-item >
+               <div class="d1">
+                            <div class="d11">
+                                <span>
+                                    <h1>基本介绍</h1>
+                                    <strong>黄梅戏，原名黄梅调、采茶戏等，起源于湖北省黄梅县，发展壮大于安徽省安庆市。 黄梅戏与京剧、越剧、评剧 、豫剧并称“中国五大戏曲剧种”，也是安徽省的主要地方戏曲剧种，湖北、江西、福建、浙江、江苏、香港、台湾等地亦有黄梅戏的专业或业余的演出团体，受到广泛的欢迎。黄梅戏是由山歌、秧歌、茶歌、采茶灯、花鼓调，先于农村，后入城市，逐步形成发展起来的一个剧种。</strong>
+                                </span>
+                            </div>
+                            <div class="d12">
+                                <img src="./img/黄梅戏logo.png" alt="">
+                            </div>
+                            <div class="d13">
+                                <span>
+                                    <br>
+                                    <strong>它吸收了汉剧、楚剧、高腔、采茶戏、京剧等众多剧种的因素，逐渐形成了自己的艺术特点。黄梅戏唱腔淳朴流畅，以明快抒情见长，具有丰富的表现力；表演质朴细致，以真实活泼著称。一曲《天仙配》让黄梅戏流行于大江南北，在海外亦有较高的声誉。 2006年5月20日，黄梅戏经国务院批准列入第一批国家级非物质文化遗产名录 。2011年6月9日，安徽省黄梅戏剧团申报的黄梅戏经国务院批准列入第三批国家级非物质文化遗产代表性项目名录扩展项目名录 。2021年5月24日，湖北省申报的黄梅戏经国务院批准列入国家级非物质文化遗产代表性项目名录扩展项目名录。</strong>
+                                </span>
+                                <div class="d14">
+                                    <span><strong>未完待续......</strong></span>
+                                </div>
+                            </div>
+
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d2">
+                                    <div class="d21">
+                                        <span>
+                                        <h1>发展历史</h1>
+                                        <strong>黄梅戏的发展历史，大致分为三个阶段：第一阶段，约从清乾隆末期到辛亥革命前后。产生和流传到皖、鄂、赣三省间的黄梅采茶调、江西调、桐城调、凤阳歌，受当地戏曲（青阳腔、徽调）演出的影响，与莲湘、高跷、旱船等民间艺术形成结合，逐渐形成了一些小戏。进一步发展，又从一种叫"罗汉桩"的曲艺形式和青阳腔与徽调吸收了演出内容与表现形式，于是产生了故事完整的本戏。从清康熙、乾隆到光绪年间，是“三打七唱”形成和发</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d22">
+                                        <img src="./img/黄梅戏logo.png" alt="">
+                                    </div>
+                                    <div class="d23">
+                                        <span>
+                                            <strong>展的重要历史阶段。这个阶段全面实践了传统剧目、唱腔、表演艺术积累和剧种的广泛传播，期间传统剧目非常丰富，艺人能演出的本戏、小戏有200多本，俗称“大本三十六、小曲七十二”。 在剧目方面，号称“大戏三十六本，小戏七十二折”。大戏主要表现的是当时人民对阶级压迫、贫富悬殊的现实不满和对自由美好生活的向往。第二阶段，是从辛亥革命到1949年。这一阶段，黄梅戏演出活动渐渐职业化，并从农村草台走上了城市舞台。黄梅戏入城后，曾与京剧合班，并在上海受到越剧、扬剧、淮剧和从北方来的评剧的影响，在演出的内容与形式上都起了很大变化。第三阶段，是1949至今。中华人民共和国成立后，黄梅戏得到迅速恢复和发展。这一时期黄梅戏还影响到不少外省地区，如湖北、江西、江苏、福建、浙江、吉林、西藏等省区也相继成立了黄梅戏剧团。香港、澳门还出现了用普通话和粤语演唱的黄梅戏。在表演艺术上，通过排演新戏和拍摄影片，吸收了话剧和电影的表演形式，在人物塑造等方面有了新的发展。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d24">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d3">
+                                    <div class="d31">
+                                        <span>
+                                            <h1>艺术特点</h1>
+                                            <strong>主腔是黄梅戏传统唱腔中最具戏剧性表现力的一个腔系。它以板式变化体（或称板腔体）为音乐结构的原则，正是这一主要特点使它区别于曲牌联缀体（或称曲牌体）的“花腔”以及兼有两种体制特征的“三腔”。黄梅戏源于民间歌舞。山野村夫的劳动之歌，妇孺皆知的里巷歌谣，灯会社火之中的欢歌劲舞，是黄梅戏活泼的源头。黄梅戏在形成第一个阶段性成果——两小戏、三小戏的进程中，也形成了百余首小曲杂调的“花腔”腔系。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d32">
+                                        <img src="./img/黄梅戏logo.png" alt="">
+                                    </div>
+                                    <div class="d33">
+                                        <span>
+                                            <br>
+                                            <strong>花腔从民歌中来，但作用已与民歌不大一样。它已经从田头走上舞台，从随口而歌进入到规定的戏剧情境，传达角色的心声。黄梅戏语言以安庆地方语言为基础，属北方方言语系的江淮官话。其特点为——唱词结构在整本戏多为七字句和十字句式。七字句大多是二、二、三结构，十字句大多是三、三、四结构。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d34">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d4">
+                                    <div class="d41">
+                                        <span>
+                                            <h1>代表作品</h1>
+                                            <a href="https://tv.cctv.com/2024/03/25/VIDEWvkhTv5N0Aw26imTyDJ6240325.shtml">《天仙配》</a>
+                                            <a href="https://tv.cctv.com/2024/03/19/VIDExAZoUUNIMqbuEaYdmHJ7240319.shtml">《女驸马》</a>
+                                            <a href="https://tv.cctv.com/2023/12/27/VIDEKG5olsZJwtU4zvbBJ5vk231227.shtml">《罗帕记》</a>
+                                            <a href="https://tv.cctv.com/2023/04/19/VIDE5JXwRLBdeENg5opQK8d7230419.shtml">《三搜国丈府》</a>
+                                            <a href="https://tv.cctv.com/2024/04/11/VIDE0I8jmhM5cPsiIPOdRw0o240411.shtml">《牛郎织女》</a>
+                                            <a href="https://tv.cctv.com/2020/12/20/VIDEcPAJeVe0Q6dB3Fy173j4201220.shtml">《小店春早》</a>
+                                        </span>
+                                    </div>
+                                    <div class="d42">
+                                        <img src="./img/黄梅戏logo.png" alt="">
+                                    </div>
+                                    <div class="d43"></div>
+                                    <div class="d44">
+                                        <span><strong>完......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+            </el-carousel>
+        </template>
+        
+    </div>
+    
+    <script>
+        let v=new Vue({
+            el:'#app',
+            data:{
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

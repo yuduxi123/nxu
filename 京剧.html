@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京剧信息</title>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="./mycss/eui.css">
+    <script src="./js/eui.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <style>
+        @font-face {
+        font-family: "Xingshu";
+        src: url(./font/SanJiXingShuJianTi-2.ttf);
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 防止页面出现滚动条 */
+        }
+        a{
+            text-decoration: none;
+        }
+        span{
+            font-family: "Xingshu";
+            font-size: 30px;
+        }
+        .el-carousel__item h3 {
+          color: #475669;
+          font-size: 20px;
+          opacity: 0.75;
+          line-height: 200px;
+          margin: 0;
+        }
+        
+        .el-carousel__item:nth-child(2n) {
+            background-color:rgba(0, 0, 0, 0)
+          
+        }
+        
+        .el-carousel__item:nth-child(2n+1) {
+            background-color:rgba(0, 0, 0, 0)
+        }
+        #backgroundVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -100; /* 你可以根据需要调整z-index的值 */
+        }
+        .d11,.d12,.d13,.d14 {
+            position: relative;
+            z-index: 1; /* 确保内容位于视频的前面 */
+            /* 其他样式，比如内容的位置和样式 */
+        }
+        .d11{
+            width: 100%;
+            height: 250px;
+        }
+        .d12{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d12>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d13{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        
+        .d14{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+
+
+        .d21{
+            width: 100%;
+            height: 250px;
+        }
+        .d22{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d22>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d23{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d24{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+       
+
+
+
+        .d31{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d32{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d32>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d33{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d34{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+        .d41{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d42{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d42>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d43{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d44{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+
+
+
+      </style>
+</head>
+<body>
+    <div id="app">
+        <div class="d0">
+            <video autoplay muted loop id="backgroundVideo">
+                <source src="./video/背景.mp4" type="video/mp4">
+            </video>
+        </div>
+        <template>
+            <el-carousel height="725px" direction="vertical" :autoplay="false">
+              <el-carousel-item >
+               <div class="d1">
+                            <div class="d11">
+                                <span>
+                                    <h1>基本介绍</h1>
+                                    <strong>京剧，又称平剧、京戏等，中国国粹之一，是中国影响力最大的戏曲剧种，分布地以北京为中心，遍及全国各地。清代乾隆五十五年（1790年）起，原在南方演出的三庆、四喜、春台、和春等多以安徽籍艺人为主的四大徽班陆续进入北京，与来自湖北的汉调艺人合作，同时接受了昆曲、秦腔的部分剧目、曲调和表演方法，又吸收了一些地方民间曲调，通过不断的交流、融合，最终形成京剧。 京剧在文学、表演、音乐、舞台美</strong>
+                                </span>
+                            </div>
+                            <div class="d12">
+                                <img src="./img/京剧logo.png" alt="">
+                            </div>
+                            <div class="d13">
+                                <span>
+                                    <strong>术等各个方面都有一套规范化的艺术表现形式。京剧的唱腔属板式变化体，以二簧（也作“二黄”）、西皮为主要声腔。京剧伴奏分文场和武场两大类，文场以胡琴为主奏乐器，武场以打击乐伴奏为主（鼓板、大锣、铙钹、小锣）。京剧的角色分为生、旦、净、丑、杂、武、流等行当，后三行已不再立专行。京剧现在的角色分为生、旦、净、丑四种。各行当都有一套表演形式。唱、念、做、打的技艺各具特色。京剧以历史故事为主要演出内容，传统剧目约有一千三百多个，常演的在三四百个以上。京剧流播全国，影响甚广，有“国剧”之称。以梅兰芳命名的京剧表演体系被视为东方戏剧表演体系的代表，为世界三大表演体系之一。京剧是中华民族传统文化的重要表现形式，其中的多种艺术元素被喻作中国传统文化的象征符号。2006年5月，京剧被国务院批准列入第一批国家级非物质文化遗产名录。2010年，被列入联合国教科文组织非物质文化遗产名录（名册）人类非物质文化遗产代表作名录。</strong>
+                                </span>
+                                <div class="d14">
+                                    <span><strong>未完待续......</strong></span>
+                                </div>
+                            </div>
+
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d2">
+                                    <div class="d21">
+                                        <span>
+                                        <h1>发展历史</h1>
+                                        <strong>京剧前身是清初流行于江南地区，以唱吹腔、高拨子、二黄为主的徽班。徽班流动性强，与其他剧种接触频繁，在声腔上互有交流渗透，因此在发展过程中也搬演了不少昆腔戏，还吸收了其他一些杂曲。清初，京城戏曲舞台上盛行昆曲与京腔（青阳腔）。乾隆中叶后，昆曲渐而衰落，京腔兴盛取代昆曲一统京城舞台。汉剧流行于湖北，其声腔中的二黄、西皮与徽戏有着血缘关系。徽、汉二剧在进京前已有广泛的艺术交融。汉剧演员搭入徽</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d22">
+                                        <img src="./img/京剧logo.png" alt="">
+                                    </div>
+                                    <div class="d23">
+                                        <span>
+                                            <strong>班后，将声腔曲调，表演技能，演出剧目溶于徽戏之中，使徽戏的唱腔板式日趋丰富完善，唱法、念白更具北京地区语音特点，而易于京人接受。道光二十五年（1845年）各大名班，均为老生担任领班。徽、汉合流后，促成了湖北的西皮调与安徽的二簧调再次交流。徽、秦、汉的合流，为京剧的诞生奠定了基础。道光二十年至咸丰十年间（1840—1860），经徽戏、秦腔、汉调的合流，并借鉴吸收昆曲、京腔之长而形成了京剧。其标志之一：曲调板式完备丰富，超越了徽、秦、汉三剧中的任何一种。1883年—1918年，京剧由形成期步入成熟期，代表人物为时称“老生后三杰”的谭鑫培、汪桂芬、孙菊仙。其中谭鑫培承程长庚、余三胜、张二奎各家艺术之长，又经创造发展，将京剧艺术推进到新的成熟境界。1917年以来，京剧优秀演员大量涌现，呈现出流派纷呈的繁盛局面，由成熟期发展到鼎盛期，这一时期的代表人物为，梅兰芳、余叔岩。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d24">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d3">
+                                    <div class="d31">
+                                        <span>
+                                            <h1>艺术特点</h1>
+                                            <strong>京剧表演的四种艺术手法：唱、念、做、打，也是京剧表演四项基本功。唱指歌唱，念指具有音乐性的念白，二者相辅相成，构成歌舞化的京剧表演艺术两大要素之一的“歌”，做指舞蹈化的形体动作，打指武打和翻跌的技艺，二者相互结合，构成歌舞化的京剧表演艺术两大要素之一的“舞”。戏曲演员从小就要从这四个方面进行训练，虽然有的演员擅长唱功（唱功老生），有的行当以做功（花旦）为主，有的以武打为主（武净）。但是要求</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d32">
+                                        <img src="./img/京剧logo.png" alt="">
+                                    </div>
+                                    <div class="d33">
+                                        <span>
+                                            <strong>每一个演员必须有过硬的唱、念、做、打四种基本功。只有这样才能充分地发挥京剧的艺术特色。更好地表现和刻画戏中的各种人物形象。京剧有唱，有舞，有对白，有武打，有各种象征性的动作，是一种高度综合性的艺术。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d34">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d4">
+                                    <div class="d41">
+                                        <span>
+                                            <h1>代表作品</h1>
+                                            <a href="https://tv.cctv.cn/2022/08/17/VIDEcLPBlWL9fO4YQzVaYVFN220817.shtml">《宇宙锋》</a>
+                                            <a href="https://tv.cctv.com/2023/12/15/VIDECsJXLEvAe036SS3qC1Gk231215.shtml">《玉堂春》</a>
+                                            <a href="https://tv.cctv.com/2024/01/07/VIDE3zjKedlREkbQUSUVaXHu240107.shtml">《长坂坡》</a>
+                                            <a href="https://tv.cctv.com/2024/03/25/VIDEcbhKl9pZgQeGkt6UL2qd240325.shtml">《群英会》</a>
+                                            <a href="https://tv.cctv.com/2023/10/07/VIDE4POhjJQ31Vrmr3vmQJal231007.shtml">《打渔杀家》</a>
+                                            <a href="https://tv.cctv.com/2014/05/26/VIDE1401104172467987.shtml">《五人义》</a>
+                                            <a href="https://tv.cctv.com/2024/01/07/VIDECKETInrBV6dXx7Z0CQN2240107.shtml">《挑滑车》</a>
+                                            <a href="https://tv.cctv.com/2023/03/01/VIDEsyNEFGwZaIQZTaJou57x230301.shtml">《打金枝》</a>
+                                            <a href="https://tv.cctv.com/2024/03/24/VIDEU59EH0dx0I2Vd5YDTFg5240324.shtml">《拾玉镯》</a>
+                                            <a href="https://tv.cctv.com/2023/07/19/VIDEiOXtsdugqWtSlAPvHHwQ230719.shtml">《三击掌》</a>
+                                            <a href="https://tv.cctv.com/2016/02/04/VIDE49mabgSS1XQ7VIjPeS2G160204.shtml">《六月雪》</a>
+                                            <a href="https://tv.cctv.com/2021/04/23/VIDE9bhDVaeuh2oLEcwwu9Jr210423.shtml">《四进士》</a>
+                                            <a href="https://tv.cctv.com/2023/10/09/VIDEoz3DmFYzORGMExiwkQKQ231009.shtml">《搜孤救孤》</a>
+                                            <a href="https://tv.cctv.com/2024/04/08/VIDEgLVZKm60j3WeYXkNnMxP240408.shtml">《秦香莲》</a>
+                                            <a href="https://tv.cctv.com/2013/01/06/VIDE1357466066085940.shtml">《打严嵩》</a>
+                                            <a href="https://tv.cctv.com/2014/01/23/VIDE1390410379818518.shtml">《挡马》</a>
+                                            <a href="https://tv.cctv.com/2021/08/03/VIDElDRi3uNcMUci5h0Od9Rs210803.shtml">《金玉奴》</a>
+                                            <a href="https://tv.cctv.com/2011/08/16/VIDE1355603876192615.shtml">《樊江关》</a>
+                                            <a href="https://tv.cctv.com/2024/03/31/VIDEePbgUqxUgMr1Vg3g8doz240331.shtml">《野猪林》</a>
+                                            <a href="https://tv.cctv.com/2021/01/28/VIDEcjGtFsufHNbLAd2uCHJL210128.shtml">《八大锤》</a>
+                                            <a href="https://tv.cctv.com/2023/07/10/VIDEBACNlbTT2wiVP6saFufM230710.shtml">《空城计》</a>
+                                            <a href="https://tv.cctv.com/2023/09/12/VIDEOvtuZtuPfG7rvjs7QnsB230912.shtml">《霸王别姬》</a>
+                                            <a href="https://tv.cctv.com/2024/03/08/VIDEkgRSALx7NyFZ2Jy3CJhh240308.shtml">《智取威虎山》</a>
+                                        </span>
+                                    </div>
+                                    <div class="d42">
+                                        <img src="./img/京剧logo.png" alt="">
+                                    </div>
+                                    <div class="d43"></div>
+                                    <div class="d44">
+                                        <span><strong>完......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+            </el-carousel>
+        </template>
+        
+    </div>
+    
+    <script>
+        let v=new Vue({
+            el:'#app',
+            data:{
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>越剧信息</title>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="./mycss/eui.css">
+    <script src="./js/eui.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <style>
+        @font-face {
+        font-family: "Xingshu";
+        src: url(./font/SanJiXingShuJianTi-2.ttf);
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 防止页面出现滚动条 */
+        }
+        a{
+            text-decoration: none;
+        }
+        span{
+            font-family: "Xingshu";
+            font-size: 30px;
+        }
+        .el-carousel__item h3 {
+          color: #475669;
+          font-size: 20px;
+          opacity: 0.75;
+          line-height: 200px;
+          margin: 0;
+        }
+        
+        .el-carousel__item:nth-child(2n) {
+            background-color:rgba(0, 0, 0, 0)
+          
+        }
+        
+        .el-carousel__item:nth-child(2n+1) {
+            background-color:rgba(0, 0, 0, 0)
+        }
+        #backgroundVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -100; /* 你可以根据需要调整z-index的值 */
+        }
+        .d11,.d12,.d13,.d14 {
+            position: relative;
+            z-index: 1; /* 确保内容位于视频的前面 */
+            /* 其他样式，比如内容的位置和样式 */
+        }
+        .d11{
+            width: 100%;
+            height: 250px;
+        }
+        .d12{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d12>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d13{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        
+        .d14{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+
+
+        .d21{
+            width: 100%;
+            height: 250px;
+        }
+        .d22{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d22>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d23{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d24{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+       
+
+
+
+        .d31{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d32{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d32>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d33{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d34{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+        .d41{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d42{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 250px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d42>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d43{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1240px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d44{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+
+
+
+      </style>
+</head>
+<body>
+    <div id="app">
+        <div class="d0">
+            <video autoplay muted loop id="backgroundVideo">
+                <source src="./video/背景.mp4" type="video/mp4">
+            </video>
+        </div>
+        <template>
+            <el-carousel height="725px" direction="vertical" :autoplay="false">
+              <el-carousel-item >
+               <div class="d1">
+                            <div class="d11">
+                                <span>
+                                    <h1>基本介绍</h1>
+                                    <strong>越剧——中国第二大剧种，有第二国剧之称，又被称为是“流传最广的地方剧种” ，有观点认为是“最大的地方戏曲剧种”， 在国外被称为“中国歌剧”。 亦为中国五大戏曲剧种（依次为京剧、越剧、黄梅戏、评剧、豫剧 ）之一。发源于浙江嵊州，发祥于上海，繁荣于全国，流传于世界，在发展中汲取了昆曲、话剧、绍剧等特色剧种之大成，经历了由男子越剧到女子越剧为主的历史性演变。</strong>
+                                </span>
+                            </div>
+                            <div class="d12">
+                                <img src="./img/越剧logo.png" alt="">
+                            </div>
+                            <div class="d13">
+                                <span>
+                                    <br>
+                                    <strong>越剧长于抒情，以唱为主，声音优美动听，表演真切动人，唯美典雅，极具江南灵秀之气；多以“才子佳人”题材为主，艺术流派纷呈，公认的就有十三大流派之多。主要流行于：上海、浙江、江苏、福建、江西、安徽等广大南方地区，以及北京、天津等大部分北方地区，鼎盛时期除西藏、广东、广西等少数省、自治区外，全国都有专业剧团存在。 越剧为首批国家级非物质文化遗产名录。2006年，上海越剧艺术传习所（上海越剧院）、嵊州市越剧艺术保护传承中心获得国家级非物质文化遗产越剧项目保护单位资格。  2008年，福建省芳华越剧团获得国家级非物质文化遗产越剧（尹派）项目保护单位资格。</strong>
+                                </span>
+                                <div class="d14">
+                                    <span><strong>未完待续......</strong></span>
+                                </div>
+                            </div>
+
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d2">
+                                    <div class="d21">
+                                        <span>
+                                        <h1>发展历史</h1>
+                                        <strong>1906年3月27日嵊县东王村香火堂前，由落地唱书艺人袁福生、李茂正、高炳火、李世泉等借用四只稻桶垫底，铺上门板，演出小戏《十件头》、《倪凤煽茶》和大戏《双金花》。这是中国越剧第一次登台试演，越剧（最初称“小歌班”）从此诞生，该日被称为越剧诞生日。1917年5月13日，小歌班初进上海，在十六铺“新化园”演出，因艺术粗糙简陋，观众寥寥无几。后续有3班艺人来上海但均告失败。在学习绍兴大班和京剧的表演艺术有所</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d22">
+                                        <img src="./img/越剧logo.png" alt="">
+                                    </div>
+                                    <div class="d23">
+                                        <span>
+                                            <strong>提高，1919年小歌班始在上海立足。
+                                                <br>1920年起，小歌班集中较知名的演员编演新剧目，如《梁山伯与祝英台》《碧玉簪》《孟丽君》等。这些剧目适应了“五四运动”后争取女权和男女平等思潮的兴起，受观众欢迎。1925年9月17日上海《申报》演出广告中首次用“越剧”称之。 1928年1月起，女班蜂拥来沪。至1941年下半年增至36个。女子越剧的著名演员几乎都荟萃于上海。报纸评论称“上海的女子越剧风靡一时，到近来竟有凌驾一切之势”。男班因演员后继无人，最终被女班取代。1949年5月上海解放。1950年4月12日成立了上海第一个国家剧团——华东越剧实验剧团。1953年底拍竣新中国的第一部彩色戏曲艺术片越剧电影《梁山伯与祝英台》，风靡一时，在香港创造了票房记录；在日内瓦会议期间，此片被周恩来多次用来招待各国政要和记者 ，被赞誉为“东方的《罗密欧与朱丽叶》”</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d24">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d3">
+                                    <div class="d31">
+                                        <span>
+                                            <h1>艺术特点</h1>
+                                            <strong>越剧流派包括剧目、唱、念、做等各种艺术因素，体现于所塑造的典型艺术形象，其中，唱腔所具有的独创性最强，特点最突出，影响也最大，因此人们称之为流派唱腔。1942年10月著名越剧表演艺术家袁雪芬对传统越剧进了全面的改革，称为“新越剧”。新越剧改变了以往“小歌班”明快、跳跃的主腔“四工腔”，一变为哀婉舒缓的唱腔曲调，即“尺调腔”和“弦下腔”，把越剧唱腔艺术推进到一个新的阶段。 越剧早期演出男角多不化妆；</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d32">
+                                        <img src="./img/越剧logo.png" alt="">
+                                    </div>
+                                    <div class="d33">
+                                        <span>
+                                            <strong>男演女角时把脑后的辫子散开，梳成发髻，上搽胭脂和铅粉；20世纪70年代末至80年代初，越剧在编演现代题材剧目时又吸收了美容方法和绘画化妆法、毛发粘贴法，塑造了毛泽东、周恩来、鲁迅等历史伟人形象。古装衣是越剧的特色服装，在剧中年轻女子和中年妇女经常穿戴。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d34">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d4">
+                                    <div class="d41">
+                                        <span>
+                                            <h1>代表作品</h1>
+                                            <a href="https://tv.cctv.com/2024/04/11/VIDEaL2y0eKkIZiYdkprrLWP240411.shtml">《梁山伯与祝英台》</a>
+                                         <a href="https://tv.cctv.com/2023/11/04/VIDEmz9i3P0WMeaq8dmMBBV6231104.shtml">《红楼梦》</a>
+                                         <a href="https://tv.cctv.com/2024/03/09/VIDEw49MlHtkv1BJX44X7WQX240309.shtml">《西厢记》</a>
+                                         <a href="https://tv.cctv.com/2023/05/23/VIDETXVf7qZqoWpDRk2Eevbn230523.shtml">《祥林嫂》</a>
+                                         <a href="https://tv.cctv.com/2023/06/10/VIDE3QqWI6meQpinCHKaeHGj230610.shtml">《何文秀》</a>
+                                         <a href="https://tv.cctv.com/2024/04/02/VIDETFdbHAsq58CT25zb11su240402.shtml">《碧玉簪》</a>
+                                         <a href="https://tv.cctv.com/2024/04/12/VIDEQ38Syl9gVp6l4mljPjY1240412.shtml">《追鱼》</a>
+                                         <a href="https://tv.cctv.com/2024/03/27/VIDExiaobbZnEBQJzss1AH7z240327.shtml">《情探》</a>
+                                         <a href="https://tv.cctv.com/2024/04/08/VIDExva8ZiSjv4NCZfu9Ue6L240408.shtml">《珍珠塔》</a>
+                                         <a href="https://tv.cctv.com/2024/04/05/VIDEfJ0WrybZGsdCiLtwllfa240405.shtml">《柳毅传书》</a>
+                                         <a href="https://tv.cctv.com/2024/02/17/VIDEt2oqNezfOv2ZzRB565yF240217.shtml">《五女拜寿》</a>
+                                         <a href="https://tv.cctv.com/2024/02/02/VIDE4QafCa5JUK1q2tfjy5yb240202.shtml">《沙漠王子》</a>
+                                         <a href="https://tv.cctv.com/2023/06/10/VIDEDYZMdqKLZk7r7WzZ5QyG230610.shtml">《盘夫索夫》</a>
+                                         <a href="https://tv.cctv.com/2024/04/02/VIDETc007fjiZKUi67UIK9mc240402.shtml">《盘妻索妻》</a>
+                                         <a href="https://tv.cctv.com/2024/01/24/VIDEts8skecxlFVPMmD9Hf8R240124.shtml">《荆钗记》</a>
+                                         <a href="https://tv.cctv.com/2023/11/29/VIDEG6bukepmc7b1x7JAwSdY231129.shtml">《山河恋》</a>
+                                         <a href="https://tv.cctv.com/2024/01/26/VIDEN62yafQO7vD0pyS1EIUv240126.shtml">《孟丽君》</a>
+                                         <a href="https://tv.cctv.com/2023/11/05/VIDEzD1EHqtiZ38Zus2yi6NO231105.shtml">《孔雀东安飞》</a>
+                                         <a href="https://tv.cctv.com/2010/03/04/VIDEcj5ujCKW8QH9TYruIiVd100304.shtml">《狸猫换太子》</a>
+                                         <a href="https://tv.cctv.com/2021/06/08/VIDEdQ2dNaLPAEQ1b9sA2gK3210608.shtml">《血手印》</a>
+                                        </span>
+                                    </div>
+                                    <div class="d42">
+                                        <img src="./img/越剧logo.png" alt="">
+                                    </div>
+                                    <div class="d43"></div>
+                                    <div class="d44">
+                                        <span><strong>完......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+            </el-carousel>
+        </template>
+        
+    </div>
+    
+    <script>
+        let v=new Vue({
+            el:'#app',
+            data:{
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>昆曲信息</title>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="./mycss/eui.css">
+    <script src="./js/eui.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <style>
+        @font-face {
+        font-family: "Xingshu";
+        src: url(./font/SanJiXingShuJianTi-2.ttf);
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 防止页面出现滚动条 */
+        }
+        a{
+            text-decoration: none;
+        }
+        span{
+            font-family: "Xingshu";
+            font-size: 30px;
+        }
+        .el-carousel__item h3 {
+          color: #475669;
+          font-size: 20px;
+          opacity: 0.75;
+          line-height: 200px;
+          margin: 0;
+        }
+        
+        .el-carousel__item:nth-child(2n) {
+            background-color:rgba(0, 0, 0, 0)
+          
+        }
+        
+        .el-carousel__item:nth-child(2n+1) {
+            background-color:rgba(0, 0, 0, 0)
+        }
+        #backgroundVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -100; /* 你可以根据需要调整z-index的值 */
+        }
+        .d11,.d12,.d13,.d14 {
+            position: relative;
+            z-index: 1; /* 确保内容位于视频的前面 */
+            /* 其他样式，比如内容的位置和样式 */
+        }
+        .d11{
+            width: 100%;
+            height: 250px;
+        }
+        .d12{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d12>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d13{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        
+        .d14{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        
+
+
+        .d21{
+            width: 100%;
+            height: 250px;
+        }
+        .d22{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d22>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d23{
+            margin-left: 0px;
+            margin-top: 7px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d24{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+       
+
+
+
+        .d31{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d32{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d32>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d33{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d34{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+        .d41{
+            margin-top: 45px;
+            width: 100%;
+            height: 250px;
+        }
+        .d42{
+            margin-left: 0px;
+            margin-top: 0px;
+            width: 450px;
+            height: 450px;
+            display: inline-block;
+        }
+        .d42>img{
+            width: 100%;
+            height: 100%;
+        }
+        .d43{
+            margin-left: 0px;
+            margin-top: 5px;
+            position: absolute;
+            width: 1040px;
+            height: 430px;
+            display: inline-block;
+        }
+        .d44{
+            width: 200px;
+            height: 41px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+
+
+
+
+
+      </style>
+</head>
+<body>
+    <div id="app">
+        <div class="d0">
+            <video autoplay muted loop id="backgroundVideo">
+                <source src="./video/背景.mp4" type="video/mp4">
+            </video>
+        </div>
+        <template>
+            <el-carousel height="725px" direction="vertical" :autoplay="false">
+              <el-carousel-item >
+               <div class="d1">
+                            <div class="d11">
+                                <span>
+                                    <h1>基本介绍</h1>
+                                    <strong>昆曲，是中国古老的戏曲声腔、剧种，现又被称为“昆剧”。昆曲是汉族传统戏曲中最古老的剧种之一 ，也是中国汉族传统文化艺术，特别是戏曲艺术中的珍品，被称为百花园中的一朵“兰花”。昆曲是明朝中叶至清代中叶戏曲中影响最大的声腔剧种，很多剧种都是在昆剧的基础上发展起来的，被称为“百戏之祖，百戏之师”，有 “中国戏曲之母”的雅称。昆曲在2001年被联合国教科文组织列为“人类口头和非物质遗产代表作” 。2006年列入第一批国家级非物质文化遗产名录。</strong>
+                                </span>
+                            </div>
+                            <div class="d12">
+                                <img src="./img/昆曲logo.png" alt="">
+                            </div>
+                            <div class="d13">
+                                <span>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <strong>地域分布：由于昆班的广泛演出活动，万历末年，昆曲经扬州传入北京、湖南，跃居各腔之首，成为传奇剧本的标准唱腔：“四方歌曲必宗吴门” 。明末清初，昆曲又流传到四川、贵州和广东等地，发展成为全国性剧种。</strong>
+                                </span>
+                                <div class="d14">
+                                    <span><strong>未完待续......</strong></span>
+                                </div>
+                            </div>
+
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d2">
+                                    <div class="d21">
+                                        <span>
+                                        <h1>发展历史</h1>
+                                        <strong>原是流行于苏州昆山一带的昆山腔。明朝时，杰出的昆曲音乐家、改革家魏良辅对昆山腔进行大胆改革，吸收了当时流行的余姚腔、弋阳腔、海盐腔的特点，因为这种腔调软糯、细腻，好像江南人吃的用水磨粉做的糯米汤团，因此起了个有趣的名字，叫“水磨调”，这就是今天的昆曲。由此形成了新的声腔，广受欢迎，成为一个全国性的剧种，代表作为汤显祖的《牡丹亭》。明代万历年间，昆曲出现爆发式发展，涌现了大量优秀的剧本，演出也非常繁荣，以苏州为中心扩展到长江以南和钱塘江以北各地，万历末年还流入北京,最终在清朝前期发展到鼎盛。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d22">
+                                        <img src="./img/昆曲logo.png" alt="">
+                                    </div>
+                                    <div class="d23">
+                                        <span>
+                                            <strong>
+                                                <br><br>然而，清政府颁布的包括禁止官员拥有家庭戏班的禁令，使家庭昆曲剧团不复存在，文人和绅士阶层与昆曲的密切联系遭到了致命的破坏，昆曲失去了最后也是最重要的社会基础，只能在苦苦撑持中不断衰落下去；接着是花雅之争，清代中叶以后，各种贴近生活、贴近观众的地方戏剧逐渐兴起，由于脱离广大人民群众和现实生活，昆曲逐渐走向没落。<br>
+                                                近代兴起（政策扶持）：1949年新中国成立，大力扶持和振兴中国传统的戏曲事业，昆曲才有幸得以重获新生。1956年，浙江昆剧团改编演出的《十五贯》在全国产生广泛的影响，周恩来总理曾感慨地说：“一出戏救活了一个剧种。” 之后，全国许多地方相继恢复了昆曲剧团。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d24">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d3">
+                                    <div class="d31">
+                                        <span>
+                                            <h1>艺术特点</h1>
+                                            <strong>昆曲表演的最大的特点是抒情性强、动作细腻，歌唱与舞蹈的身段结合得巧妙而谐和。昆曲糅合了唱念做打、舞蹈及武术等，以曲词典雅、行腔婉转、表演细腻著称，是被誉为“百戏之祖”的南戏系统下之一的曲种。昆曲以鼓、板控制演唱节奏，以曲笛、三弦等为主要伴奏乐器，其唱念语音为“中州韵”。昆曲唱腔华丽婉转、念白儒雅、表演细腻、舞蹈飘逸，加上完美的舞台置景，可以说在戏曲表演的各个方面都达到了最高境界。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d32">
+                                        <img src="./img/昆曲logo.png" alt="">
+                                    </div>
+                                    <div class="d33">
+                                        <span>
+                                            <br>
+                                            <strong>正因如此，许多地方剧种，如晋剧、蒲剧、湘剧、川剧、赣剧、桂剧、越剧、闽剧等，都受到过昆剧艺术多方面哺育和滋养。昆剧的戏曲舞蹈多方吸收和继承了古代民间舞蹈、宫廷舞蹈的传统，通过长期舞台演出实践，积累了丰富的说唱与舞蹈紧密结合的经验，适应叙事写景的演出场子的需要，创造出许多偏重于描写的舞蹈表演，与“戏”配合，成为故事性较强的折子戏。</strong>
+                                        </span>
+                                    </div>
+                                    <div class="d34">
+                                        <span><strong>未完待续......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+              <el-carousel-item >
+               <div class="d4">
+                                    <div class="d41">
+                                        <span>
+                                            <h1>代表作品</h1>
+                                            <a href="https://tv.cctv.com/2013/02/26/VIDE1364889085033895.shtml">《牡丹亭》</a>
+                                            <a href="https://tv.cctv.com/2013/02/26/VIDE1364889085813914.shtml">《邯郸记》</a>
+                                            <a href="https://tv.cctv.com/2009/09/18/VIDE1355605780653448.shtml">《义侠记》</a>
+                                            <a href="https://tv.cctv.com/2011/01/18/VIDEAgP8JdmZQz8rlHcRCeDw110112.shtml">《玉簪记》</a>
+                                        </span>
+                                    </div>
+                                    <div class="d42">
+                                        <img src="./img/昆曲logo.png" alt="">
+                                    </div>
+                                    <div class="d43"></div>
+                                    <div class="d44">
+                                        <span><strong>完......</strong></span>
+                                    </div>
+               </div>
+              </el-carousel-item>
+            </el-carousel>
+        </template>
+        
+    </div>
+    
+    <script>
+        let v=new Vue({
+            el:'#app',
+            data:{
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>
